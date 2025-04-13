@@ -26,10 +26,12 @@ export const useAuthStore = create((set, get) => ({
 
   login: async (data) => {
     set({ isLoggingIn: true });
+    console.time("Request Time");
     try {
       const res = await api.post("/auth/login", data);
       set({ authUser: res.data });
       toast.success("Logged In Successfully");
+      console.timeEnd("Request Time");
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
@@ -62,9 +64,11 @@ export const useAuthStore = create((set, get) => ({
 
   profile: async (userId) => {
     set({ isLoading: true });
+    console.time("Request Time");
     try {
       const res = await api.get(`/auth/profile/${userId}`);
       set({ user: res.data });
+      console.timeEnd("Request Time");
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {

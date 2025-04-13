@@ -16,22 +16,41 @@ function ProfilePage() {
   }, [profile]);
   console.log(user);
   return (
-    <div>
-      <div>
-        <label>Username :</label>
-        <p>{user?.user?.username}</p>
-      </div>
-      <div>
-        <label>Email :</label>
-        <p>{user?.user?.email}</p>
-      </div>
-      <div>
-        <label>Bio :</label>
-        <p>{user?.user?.Bio}</p>
-      </div>
-      <div>
-        <label>createdAt :</label>
-        <p>{user?.user?.createdAt}</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow space-y-4">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+          Profile Info
+        </h2>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">
+            Username:
+          </label>
+          <p className="text-gray-800 font-medium">{user?.user?.username}</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">
+            Email:
+          </label>
+          <p className="text-gray-800 font-medium">{user?.user?.email}</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">
+            Bio:
+          </label>
+          <p className="text-gray-800 font-medium">
+            {user?.user?.Bio || "No bio available"}
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">
+            Created At:
+          </label>
+          <p className="text-gray-800 font-medium">{user?.user?.createdAt}</p>
+        </div>
       </div>
     </div>
   );

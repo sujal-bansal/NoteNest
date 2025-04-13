@@ -12,12 +12,12 @@ function HomePage() {
   }, [getNotes]);
 
   return (
-    <div>
-      <div>
+    <div className="space-y-6">
+      <div className="bg-white shadow p-4 rounded">
         <AddNote />
       </div>
 
-      <div>
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {notes.map((note) => (
           <Note key={note._id} data={note} />
         ))}

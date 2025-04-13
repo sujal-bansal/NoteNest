@@ -15,26 +15,28 @@ function App() {
   }, [checkAuth]);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50 text-gray-500n">
       <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={authUser ? <HomePage /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/profile"
-          element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/signup"
-          element={!authUser ? <SignupPage /> : <Navigate to="/" />}
-        />
-      </Routes>
+      <div className="max-w-3xl mx-auto px-4">
+        <Routes>
+          <Route
+            path="/"
+            element={authUser ? <HomePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/profile"
+            element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/signup"
+            element={!authUser ? <SignupPage /> : <Navigate to="/" />}
+          />
+        </Routes>
+      </div>
       <Toaster />
     </div>
   );

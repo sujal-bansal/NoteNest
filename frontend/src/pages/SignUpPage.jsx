@@ -29,53 +29,74 @@ function SignupPage() {
     if (success === true) await signup(formData);
   };
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow space-y-4">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+          Create Account
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label>Username :</label>
+            <label className="block text-sm font-medium text-gray-600">
+              Username:
+            </label>
             <input
               type="text"
               value={formData.username}
-              onChange={(e) => {
-                setFormData({ ...formData, username: e.target.value });
-              }}
+              onChange={(e) =>
+                setFormData({ ...formData, username: e.target.value })
+              }
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-500"
             />
           </div>
           <div>
-            <label>Email :</label>
+            <label className="block text-sm font-medium text-gray-600">
+              Email:
+            </label>
             <input
               type="text"
               value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-              }}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-500"
             />
           </div>
           <div>
-            <label>Password :</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              value={formData.password}
-              onChange={(e) => {
-                setFormData({ ...formData, password: e.target.value });
-              }}
-            />
-            <button
-              type="button"
-              onClick={() => {
-                setShowPassword(!showPassword);
-              }}
-            >
-              {showPassword ? <EyeOff /> : <Eye />}
-            </button>
+            <label className="block text-sm font-medium text-gray-600">
+              Password:
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-500 pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-300"
+          >
+            Submit
+          </button>
         </form>
+        <p className="text-center text-sm text-gray-600">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
-      <p>
-        Already have an account?<Link to="/login">Login</Link>
-      </p>
     </div>
   );
 }
